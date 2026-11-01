@@ -21,6 +21,12 @@
   <a href="README.md">中文</a> ｜ <strong>English</strong>
 </p>
 
+<p align="center">
+  <a href="https://haosen-zhang.github.io/MRI-Anatomy-Physics-Lab/">
+    <img src="https://img.shields.io/badge/LIVE_DEMO-Open%20the%20Lab-2ea44f?style=for-the-badge" alt="Live demo — open MRI Anatomy & Physics Lab">
+  </a>
+</p>
+
 > **From the outer cover to k-space.** Explore a generic 3.0 T superconducting MRI as 21 engineering components, cut real geometry with clipping planes, isolate subsystems, and connect the hardware to the physics that forms an image.
 
 ---
@@ -112,7 +118,9 @@ No vendor CAD, patient data, pre-rendered video or external 3D assets.
 
 ## Quick start
 
-The repository includes a prebuilt offline bundle. To view the lab:
+**[Open the live demo → MRI Anatomy & Physics Lab](https://haosen-zhang.github.io/MRI-Anatomy-Physics-Lab/)**
+
+The site is deployed with GitHub Pages. It also works offline; the repository includes a prebuilt bundle. To view locally:
 
 ```bash
 git clone https://github.com/Haosen-Zhang/MRI-Anatomy-Physics-Lab.git

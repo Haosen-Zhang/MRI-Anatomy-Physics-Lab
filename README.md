@@ -23,6 +23,12 @@
 </p>
 
 <p align="center">
+  <a href="https://haosen-zhang.github.io/MRI-Anatomy-Physics-Lab/">
+    <img src="https://img.shields.io/badge/LIVE_DEMO-Open%20the%20Lab-2ea44f?style=for-the-badge" alt="Live demo — open MRI Anatomy & Physics Lab">
+  </a>
+</p>
+
+<p align="center">
   <code>21</code> 个部件 · <code>06</code> 个子系统 · <code>07</code> 种观察模式 · <code>06</code> 个物理实验 · <code>02</code> 种语言 · <code>00</code> 个服务器依赖
 </p>
 
@@ -149,6 +155,12 @@ B₀、Larmor 进动、RF 激发与翻转角、梯度编码、GRE 时序、Carte
 ---
 
 ## 🚀 快速开始
+
+### 在线体验
+
+**[打开 Live Demo → MRI Anatomy & Physics Lab](https://haosen-zhang.github.io/MRI-Anatomy-Physics-Lab/)**
+
+部署在 GitHub Pages，直接打开即可浏览。若需要离线使用，也可以按下面的方式本地打开。
 
 ### 直接打开（推荐）
 
