@@ -116,13 +116,23 @@ B₀、Larmor 进动、RF 激发与翻转角、梯度编码、GRE 时序、Carte
 </td>
 </tr>
 <tr>
-<td width="50%" align="center">
-  <a href="previews/02-kspace.png"><img src="previews/02-kspace.png" width="100%" alt="Cartesian k-space sampling and inverse FFT reconstruction"></a>
+<td colspan="2" align="center">
+  <a href="previews/02-kspace.png"><img src="previews/02-kspace.png" width="78%" alt="Cartesian k-space sampling and inverse FFT reconstruction"></a>
   <br><sub><strong>K-space 与重建</strong><br>真实 2D FFT + 欠采样混叠演示</sub>
 </td>
-<td width="50%" align="center">
-  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="100%" alt="Mobile layout with touch-friendly drawers and controls"></a>
-  <br><sub><strong>移动端</strong><br>抽屉式导航 + 自适应控制台</sub>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="56%" valign="middle">
+  <h3>📱 移动端也能完整操作</h3>
+  <p>桌面端的装配树、技术档案与实验控制会被收纳为抽屉和横向控制台；触屏上仍可旋转、缩放、选择部件、切换剖面和运行物理实验。</p>
+  <p>页面同时提供低性能像素比模式，适合在教学演示电脑或移动设备上快速打开。</p>
+</td>
+<td width="44%" align="center">
+  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="84%" alt="Mobile layout with touch-friendly drawers and controls"></a>
+  <br><sub><strong>390 × 844</strong><br>响应式实验室界面</sub>
 </td>
 </tr>
 </table>

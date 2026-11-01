@@ -108,13 +108,23 @@ No vendor CAD, patient data, pre-rendered video or external 3D assets.
 </td>
 </tr>
 <tr>
-<td width="50%" align="center">
-  <a href="previews/02-kspace.png"><img src="previews/02-kspace.png" width="100%" alt="K-space and reconstruction"></a><br>
-  <sub><strong>K-space & reconstruction</strong><br>real 2D FFT + aliasing</sub>
+<td colspan="2" align="center">
+  <a href="previews/02-kspace.png"><img src="previews/02-kspace.png" width="78%" alt="K-space and reconstruction"></a><br>
+  <sub><strong>K-space &amp; reconstruction</strong><br>real 2D FFT + aliasing</sub>
 </td>
-<td width="50%" align="center">
-  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="100%" alt="Mobile layout"></a><br>
-  <sub><strong>Mobile layout</strong><br>drawers + adaptive controls</sub>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="56%" valign="middle">
+  <h3>📱 Fully usable on mobile</h3>
+  <p>The assembly tree, technical dossier and experiment controls become drawers and a horizontally scrollable control deck. You can still orbit, zoom, select components, change sections and run experiments by touch.</p>
+  <p>A low-performance pixel-ratio mode is included for classroom projectors and phones.</p>
+</td>
+<td width="44%" align="center">
+  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="84%" alt="Mobile layout"></a><br>
+  <sub><strong>390 × 844</strong><br>responsive laboratory</sub>
 </td>
 </tr>
 </table>
