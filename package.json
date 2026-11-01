@@ -1,0 +1,14 @@
+{
+  "name": "mri-anatomy-physics-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive 3D MRI system anatomy and physics teaching laboratory built with Three.js.",
+  "scripts": {
+    "build": "esbuild js/main.js --bundle --format=iife --target=es2020 --minify --outfile=js/app.bundle.js",
+    "dev": "python3 -m http.server 4174"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "three": "^0.187.0"
+  }
+}

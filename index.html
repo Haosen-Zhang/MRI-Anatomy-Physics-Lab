@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#03070b" />
+  <meta name="description" content="MRI Anatomy & Physics Lab — interactive 3D superconducting MRI teardown, engineering explorer and MRI physics teaching laboratory." />
+  <title>MRI Anatomy &amp; Physics Lab — Interactive 3D MRI System</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23040a0f'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2366a5bd' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='12' fill='none' stroke='%235f9fe8' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%2391e4ff'/%3E%3Cpath d='M32 3v8M32 53v8M3 32h8M53 32h8' stroke='%233a5666' stroke-width='2'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="is-booting">
+  <div id="stage" class="stage-canvas" role="application" tabindex="0" aria-label="Interactive three-dimensional MRI system. Drag to orbit, scroll or pinch to zoom, and select components to inspect."></div>
+  <div class="scene-backdrop" aria-hidden="true">
+    <div class="scene-backdrop__grid"></div>
+    <div class="scene-backdrop__vignette"></div>
+    <div class="scene-backdrop__noise"></div>
+  </div>
+
+  <div class="app-shell" id="app-shell">
+    <header class="topbar" role="banner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span class="brand-mark__ring"></span><span class="brand-mark__bore"></span><span class="brand-mark__axis"></span></div>
+        <div class="brand-copy">
+          <div class="brand-title">MRI <span>ANATOMY</span> <i>&amp;</i> PHYSICS LAB</div>
+          <div class="brand-sub" id="brand-sub">通用 3.0 T 水平孔径超导 MRI · 教学数字孪生</div>
+        </div>
+      </div>
+      <nav class="mode-tabs" aria-label="Workspace mode">
+        <button type="button" class="mode-tab is-active" data-mode="anatomy"><span class="mode-tab__index">01</span><span class="mode-tab__title" data-i18n="modeAnatomy">装配解剖</span><span class="mode-tab__en">ANATOMY</span></button>
+        <button type="button" class="mode-tab" data-mode="physics"><span class="mode-tab__index">02</span><span class="mode-tab__title" data-i18n="modePhysics">物理实验</span><span class="mode-tab__en">PHYSICS</span></button>
+      </nav>
+      <div class="top-actions">
+        <div class="field-switch" aria-label="Static field strength">
+          <span class="micro-label">B₀</span>
+          <button type="button" data-field="1.5" class="field-btn">1.5 T</button>
+          <button type="button" data-field="3" class="field-btn is-active">3.0 T</button>
+        </div>
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" data-lang="zh" class="lang-btn is-active">中</button>
+          <button type="button" data-lang="en" class="lang-btn">EN</button>
+        </div>
+        <button type="button" class="icon-button top-action-button" id="science-button" aria-label="Scientific notes and references" title="Scientific notes &amp; sources">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11.2a2.8 2.8 0 0 1 2.8 2.8V20H7.7A2.7 2.7 0 0 1 5 17.3V4.5Z"/><path d="M5 17.3A2.7 2.7 0 0 1 7.7 14.6H19M8.4 8h7M8.4 11h5"/></svg>
+        </button>
+        <button type="button" class="icon-button top-action-button" id="help-button" aria-label="Help and glossary" title="Help &amp; glossary"><span class="question-mark">?</span></button>
+        <button type="button" class="icon-button top-action-button mobile-menu-button" id="left-menu-button" aria-label="Open system tree" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h11"/></svg></button>
+        <button type="button" class="icon-button top-action-button mobile-menu-button" id="right-menu-button" aria-label="Open component details" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 8h8M8 12h5"/></svg></button>
+      </div>
+    </header>
+
+    <aside class="side-panel left-panel" id="left-panel" aria-label="MRI assembly tree">
+      <div class="panel-chrome panel-chrome--tl"></div><div class="panel-chrome panel-chrome--br"></div>
+      <div class="panel-header">
+        <div><div class="panel-kicker"><span id="left-kicker">ASSEMBLY TREE / 21</span><span class="panel-rule"></span></div><h1 id="left-title">系统装配树</h1><p class="panel-subtitle" id="left-subtitle">通用临床 MR 系统 · 选择部件进入技术档案</p></div>
+        <button type="button" class="panel-close mobile-close" id="left-close" aria-label="Close system tree"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="panel-scroll" id="left-content"></div>
+      <div class="panel-footer" id="left-footer"><span class="science-chip level-b">LEVEL B</span><span id="left-footer-note">典型工程架构 · 非厂商 CAD</span></div>
+    </aside>
+
+    <aside class="side-panel right-panel" id="right-panel" aria-label="Component technical dossier">
+      <div class="panel-chrome panel-chrome--tl"></div><div class="panel-chrome panel-chrome--br"></div>
+      <div class="panel-header right-panel-header">
+        <div><div class="panel-kicker"><span id="right-kicker">TECHNICAL DOSSIER</span><span class="panel-rule"></span></div><h1 id="right-title">系统总览</h1><p class="panel-subtitle" id="right-subtitle">工程结构、可信度与成像影响</p></div>
+        <button type="button" class="panel-close mobile-close" id="right-close" aria-label="Close component dossier"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="panel-scroll dossier-scroll" id="right-content"></div>
+      <div class="panel-footer right-footer"><span class="micro-label" id="right-footer-label">SELECTED / NONE</span><button type="button" class="text-link" id="right-footer-action">CLEAR SELECTION</button></div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobile-scrim" aria-hidden="true"></div>
+
+    <div class="viewport-ui" id="viewport-ui">
+      <div class="scene-topline">
+        <div class="scene-state" id="scene-state"><span class="scene-state__dot"></span><span id="scene-state-text">TRANSPARENT SHELL</span><span class="scene-state__divider"></span><span class="scene-state__detail">GENERIC 3.0 T · 70 cm BORE</span></div>
+        <div class="scene-actions">
+          <button type="button" class="scene-small-button" id="labels-button" aria-pressed="true" title="Toggle component labels"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.4 13.4-7 7a2 2 0 0 1-2.8 0L3 12.8V3h9.8l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="8" cy="8" r="1.2"/></svg><span data-i18n="labels">标注</span></button>
+          <button type="button" class="scene-small-button" id="camera-reset-button" title="Reset view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M5.3 5.4A9 9 0 0 1 20.7 12M18.7 18.6A9 9 0 0 1 3.3 12"/></svg><span data-i18n="resetView">复位</span></button>
+        </div>
+      </div>
+      <div class="isocenter-tag" id="isocenter-tag" aria-hidden="true"><span class="isocenter-tag__cross"></span><span>ISO</span></div>
+      <div id="callout-layer" class="callout-layer" aria-hidden="true"></div>
+      <svg id="leader-layer" class="leader-layer" aria-hidden="true"><g id="leader-lines"></g></svg>
+      <div class="focus-reticle" id="focus-reticle" aria-hidden="true"><span class="reticle-corner reticle-corner--tl"></span><span class="reticle-corner reticle-corner--tr"></span><span class="reticle-corner reticle-corner--bl"></span><span class="reticle-corner reticle-corner--br"></span><span class="reticle-cross reticle-cross--h"></span><span class="reticle-cross reticle-cross--v"></span><span class="reticle-caption" id="reticle-caption">SELECTED</span></div>
+      <div class="physics-hud" id="physics-hud" hidden><div class="physics-hud__kicker"><span id="physics-kicker">PHYSICS EXPERIMENT</span><span class="level-badge" id="physics-level">LEVEL A</span></div><div class="physics-formula" id="physics-formula">B₀ = 3.0 T · +Z</div><div class="physics-caption" id="physics-caption"></div><div class="physics-legend" id="physics-legend"></div></div>
+      <div class="section-legend" id="section-legend" hidden><div class="section-legend__head"><span class="micro-label">SECTION LAYERS</span><button type="button" class="mini-close" id="section-legend-close" aria-label="Hide section legend">×</button></div><div id="section-legend-content"></div></div>
+      <div class="interaction-hint" id="interaction-hint"><span class="interaction-hint__mouse"></span><span id="interaction-hint-text">拖动旋转 · 滚轮缩放 · 点击部件查看技术档案</span></div>
+      <div class="axis-readout" id="axis-readout"><div><span>Z</span><b>B₀ / BORE</b></div><div><span>Y</span><b>SUPERIOR</b></div><div><span>X</span><b>PATIENT L/R</b></div><div class="axis-readout__iso"><i></i><span>ORIGIN = ISOCENTRE</span></div></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <section class="bottom-console" id="anatomy-console" aria-label="Display and disassembly controls">
+      <div class="console-row console-row--main">
+        <div class="console-block display-block"><span class="console-label">DISPLAY MODE <b>/</b> 显示方式</span><div class="display-modes" id="display-modes">
+          <button type="button" class="mode-chip is-active" data-display="transparent"><span>01</span>透明壳</button>
+          <button type="button" class="mode-chip" data-display="complete"><span>02</span>整机</button>
+          <button type="button" class="mode-chip" data-display="longitudinal"><span>03</span>纵剖</button>
+          <button type="button" class="mode-chip" data-display="transverse"><span>04</span>横剖</button>
+          <button type="button" class="mode-chip" data-display="cutaway"><span>05</span>局部剖切</button>
+          <button type="button" class="mode-chip" data-display="exploded"><span>06</span>拆解</button>
+        </div></div>
+        <div class="console-block transport-block"><span class="console-label">DISASSEMBLY TIMELINE <b>/</b> 拆解时间轴</span><div class="transport-controls">
+          <button type="button" class="transport-btn" id="reverse-button" aria-label="Play reverse or step back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6 4 12l7 6V6ZM20 6l-7 6 7 6V6Z"/></svg></button>
+          <button type="button" class="transport-btn transport-btn--play" id="play-button" aria-label="Play or pause disassembly"><svg viewBox="0 0 24 24" aria-hidden="true" class="play-icon"><path d="m8 5 11 7-11 7V5Z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="pause-icon"><path d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg></button>
+          <button type="button" class="transport-btn" id="forward-button" aria-label="Play forward or step forward"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 6l7 6-7 6V6ZM4 6l7 6-7 6V6Z"/></svg></button>
+          <div class="timeline-wrap"><div class="timeline-ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><input id="explode-range" class="timeline-range" type="range" min="0" max="100" step="0.5" value="0" aria-label="Disassembly progress" /><span class="timeline-value" id="explode-value">0%</span></div>
+          <button type="button" class="text-button compact" id="timeline-reset-button">RESET</button>
+        </div></div>
+      </div>
+      <div class="console-row console-row--sub">
+        <div class="console-group console-group--slider"><label class="micro-label" for="shell-range">SHELL OPACITY <b id="shell-value">AUTO</b></label><input id="shell-range" class="mini-range" type="range" min="5" max="100" step="1" value="100" aria-label="Shell opacity" /></div>
+        <div class="console-group"><label class="micro-label" for="view-preset">CAMERA PRESET</label><select id="view-preset" class="console-select" aria-label="Camera preset"><option value="iso">ISOMETRIC / 等轴测</option><option value="front">FRONT / 前视</option><option value="rear">REAR / 后视</option><option value="left">LEFT / 左侧</option><option value="right">RIGHT / 右侧</option><option value="top">TOP / 顶视</option><option value="axial">AXIAL CROSS-SECTION / 轴位剖面</option><option value="longitudinal">LONGITUDINAL CUTAWAY / 纵切</option><option value="systems">SYSTEMS &amp; ROOM / 机房布局</option></select></div>
+        <div class="console-group"><span class="micro-label">PROJECTION</span><div class="segmented" id="projection-toggle"><button type="button" class="is-active" data-projection="perspective">PERSPECTIVE</button><button type="button" data-projection="orthographic">ORTHOGRAPHIC</button></div></div>
+        <div class="console-group"><span class="micro-label">PATIENT POSITION</span><button type="button" class="console-button" id="table-button" aria-pressed="true">TABLE IN / 扫描位</button></div>
+        <div class="console-group console-group--last"><span class="micro-label">SCENE</span><div class="toggle-row">
+          <button type="button" class="console-icon-button" id="auto-rotate-button" aria-pressed="false" title="Auto rotate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v6h-6"/></svg></button>
+          <button type="button" class="console-icon-button" id="isolate-button" title="Isolate selected component" aria-label="Isolate selected component"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/></svg></button>
+          <button type="button" class="console-icon-button" id="hide-button" title="Hide selected component" aria-label="Hide selected component"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s3.6-6 9-6 9 6 9 6-3.6 6-9 6-9-6-9-6Z"/><path d="M4 4l16 16"/></svg></button>
+          <button type="button" class="console-icon-button" id="low-perf-button" title="Low performance mode" aria-label="Toggle low performance mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17V7M8 17V9M12 17V5M16 17v-6M20 17V8"/></svg></button>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="bottom-console physics-console" id="physics-console" aria-label="Physics experiment controls" hidden>
+      <div class="console-row physics-console__main" id="physics-controls"></div>
+      <div class="console-row console-row--sub physics-subrow">
+        <div class="console-group"><span class="micro-label">EXPERIMENT</span><span class="physics-console-name" id="physics-console-name">B0</span></div>
+        <div class="console-group"><label class="micro-label" for="lab-view-preset">CAMERA PRESET</label><select id="lab-view-preset" class="console-select" aria-label="Physics camera preset"><option value="iso">SYSTEM / 系统</option><option value="axial">BORE AXIAL / 孔径轴向</option><option value="longitudinal">CUTAWAY / 侧剖</option><option value="top">TOP / 顶视</option></select></div>
+        <div class="console-group"><span class="micro-label">PROJECTION</span><div class="segmented" id="lab-projection-toggle"><button type="button" class="is-active" data-projection="perspective">PERSPECTIVE</button><button type="button" data-projection="orthographic">ORTHOGRAPHIC</button></div></div>
+        <div class="console-group console-group--last"><span class="micro-label">PHYSICS</span><span class="physics-console-status"><i></i> SYNCHRONISED</span></div>
+      </div>
+    </section>
+
+    <section class="lab-overlay" id="lab-overlay" hidden aria-label="Experiment analysis panel"><div class="lab-overlay__head"><div><span class="micro-label" id="lab-overlay-kicker">SEQUENCE / ANALYSIS</span><span class="lab-overlay__title" id="lab-overlay-title">Timeline</span></div><button type="button" class="mini-close" id="lab-overlay-close" aria-label="Hide analysis panel">×</button></div><div class="lab-overlay__body" id="lab-overlay-body"></div></section>
+
+    <div class="modal-root" id="modal-root" hidden><div class="modal-backdrop" data-close-modal></div><div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-topline"><span class="micro-label" id="modal-kicker">SCIENTIFIC NOTES</span><button type="button" class="panel-close" id="modal-close" aria-label="Close dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="modal-tabs" id="modal-tabs" role="tablist"></div><h2 class="modal-title" id="modal-title">Scientific notes</h2><div class="modal-content" id="modal-content"></div></div></div>
+
+    <div class="boot-screen" id="boot-screen"><div class="boot-core"><div class="boot-orbit" aria-hidden="true"><i></i><i></i><i></i></div><div class="boot-brand">MRI <span>ANATOMY</span> &amp; PHYSICS LAB</div><div class="boot-sub">3.0 T SUPERCONDUCTING MRI · GENERIC TEACHING MODEL</div><div class="boot-progress"><span id="boot-progress-fill"></span></div><div class="boot-status"><span id="boot-status-text">INITIALISING GEOMETRY</span><b id="boot-percent">00%</b></div><div class="boot-disclaimer">GENERIC ENGINEERING RECONSTRUCTION · NOT FOR CLINICAL USE</div></div></div>
+  </div>
+  <noscript><div class="noscript">This interactive laboratory requires JavaScript and WebGL 2.</div></noscript>
+  <script src="./js/app.bundle.js" defer></script>
+</body>
+</html>
