@@ -115,19 +115,14 @@ No vendor CAD, patient data, pre-rendered video or external 3D assets.
 </tr>
 </table>
 
-<table>
-<tr>
-<td width="56%" valign="middle">
-  <h3>📱 Fully usable on mobile</h3>
-  <p>The assembly tree, technical dossier and experiment controls become drawers and a horizontally scrollable control deck. You can still orbit, zoom, select components, change sections and run experiments by touch.</p>
-  <p>A low-performance pixel-ratio mode is included for classroom projectors and phones.</p>
-</td>
-<td width="44%" align="center">
-  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="84%" alt="Mobile layout"></a><br>
-  <sub><strong>390 × 844</strong><br>responsive laboratory</sub>
-</td>
-</tr>
-</table>
+<h3>📱 Fully usable on mobile</h3>
+<p>The assembly tree, technical dossier and experiment controls become drawers and a horizontally scrollable control deck. You can still orbit, zoom, select components, change sections and run experiments by touch.</p>
+<p>A low-performance pixel-ratio mode is included for classroom projectors and phones.</p>
+
+<p align="center">
+  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="250" alt="Mobile layout"></a>
+</p>
+<p align="center"><sub><strong>390 × 844</strong> · drawers / adaptive console / touch controls</sub></p>
 
 ---
 
