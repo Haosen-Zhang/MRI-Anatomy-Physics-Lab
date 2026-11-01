@@ -89,6 +89,11 @@ B₀、Larmor 进动、RF 激发与翻转角、梯度编码、GRE 时序、Carte
 
 <p align="center"><sub><strong>桌面端：</strong>透明壳视图 / 21 部件装配树 / 技术档案 / 3D 引线标注 / 拆解时间轴</sub></p>
 
+<p align="center">
+  <a href="previews/03-complete.png"><img src="previews/03-complete.png" width="76%" alt="Complete exterior assembly of the generic 3.0 T MRI"></a>
+</p>
+<p align="center"><sub><strong>整机模式：</strong>外部机壳 / 70 cm 孔径 / 患者床 / 冷头与服务塔 · 先建立系统整体感，再进入内部解剖</sub></p>
+
 <table>
 <tr>
 <td width="50%" align="center">

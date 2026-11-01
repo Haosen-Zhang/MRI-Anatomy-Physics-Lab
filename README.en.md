@@ -81,6 +81,11 @@ No vendor CAD, patient data, pre-rendered video or external 3D assets.
 </p>
 <p align="center"><sub>Transparent-shell view · assembly tree · technical dossier · 3D callouts · disassembly timeline</sub></p>
 
+<p align="center">
+  <a href="previews/03-complete.png"><img src="previews/03-complete.png" width="76%" alt="Complete exterior assembly of the generic 3.0 T MRI"></a>
+</p>
+<p align="center"><sub><strong>Complete assembly:</strong> outer housing, 70 cm bore, patient table, cold head and service turret.</sub></p>
+
 <table>
 <tr>
 <td width="50%" align="center">
