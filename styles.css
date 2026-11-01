@@ -287,3 +287,322 @@ body.is-booting .app-shell>header,body.is-booting .side-panel,body.is-booting .b
 }
 @media(max-width:420px){.brand-title{max-width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.mode-tab__title{font-size:9px}.modal-tab{font-size:8px;padding:0 7px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* ==========================================================================
+   LEGIBILITY PASS — larger interface type and touch-friendly control sizing
+   ========================================================================== */
+:root {
+  --left: 318px;
+  --right: 374px;
+  --console: 150px;
+}
+
+.micro-label,
+.console-label,
+.panel-kicker,
+.physics-hud__kicker,
+.scene-state,
+.science-chip,
+.level-badge {
+  font-size: 9.5px;
+  letter-spacing: .09em;
+}
+
+.brand-title { font-size: 13px; letter-spacing: .10em; }
+.brand-sub { font-size: 10px; line-height: 1.45; }
+.mode-tab { min-width: 142px; height: 42px; }
+.mode-tab__index { font-size: 8px; }
+.mode-tab__title { font-size: 13px; }
+.mode-tab__en { font-size: 7.5px; }
+.field-switch, .lang-switch { height: 30px; }
+.field-btn, .lang-btn { height: 22px; padding: 0 8px; font-size: 9px; }
+.top-action-button { width: 32px; height: 32px; }
+.question-mark { font-size: 14px; }
+.panel-close { width: 30px; height: 30px; }
+
+.panel-header { padding: 19px 18px 16px; }
+.panel-kicker { font-size: 9px; }
+.panel-header h1 { margin-top: 11px; font-size: 24px; }
+.panel-subtitle { margin-top: 7px; font-size: 10.5px; line-height: 1.65; }
+.panel-footer { min-height: 48px; padding: 0 18px; }
+.panel-footer #left-footer-note,
+.panel-footer #right-footer-label { font-size: 8px; line-height: 1.4; }
+.panel-footer .science-chip { font-size: 7px; padding: 4px 6px; }
+.text-link { font-size: 8px; padding: 6px 0; }
+
+.tree-category { height: 34px; padding: 0 18px; }
+.tree-category__bar { height: 13px; }
+.tree-category__label { font-size: 9px; }
+.tree-category__count { font-size: 8px; }
+.tree-category__chevron { width: 12px; height: 12px; }
+.tree-item {
+  grid-template-columns: 27px minmax(0, 1fr) 38px;
+  min-height: 48px;
+  padding: 7px 14px 7px 16px;
+  gap: 7px;
+}
+.tree-item__index { padding-top: 5px; font-size: 8.5px; }
+.tree-item__copy b { font-size: 13px; line-height: 1.35; }
+.tree-item__copy span { margin-top: 3px; font-size: 9px; line-height: 1.25; }
+.tree-item__tail { gap: 5px; }
+.level-dot { width: 5px; height: 5px; }
+.eye-button { width: 26px; height: 26px; }
+.eye-button svg { width: 15px; height: 15px; }
+.tree-note { padding: 11px; font-size: 9.5px; line-height: 1.75; }
+.tree-legend { gap: 8px 12px; padding: 13px 18px 15px; }
+.tree-legend span { font-size: 8px; }
+
+.dossier-scroll { padding: 18px 18px 28px; }
+.eyebrow { font-size: 8.5px; letter-spacing: .08em; }
+.empty-title { font-size: 30px; }
+.empty-title span { font-size: 10.5px; }
+.empty-copy { font-size: 11px; line-height: 1.8; }
+.arch-row { min-height: 35px; font-size: 10.5px; }
+.arch-row span:last-child { font-size: 8px; }
+.coord-panel { padding: 13px; }
+.coord-title { font-size: 8.5px; }
+.coord-grid { gap: 8px 9px; margin-top: 11px; }
+.coord-grid span, .coord-grid b { font-size: 8.5px; }
+.howto-panel { padding: 14px; }
+.howto-panel p { font-size: 10px; line-height: 1.75; }
+.model-note { font-size: 8px; line-height: 1.75; }
+.dossier-cat__name { font-size: 8.5px; }
+.level-badge { padding: 5px 7px; font-size: 7.5px; }
+.dossier-index { margin-top: 17px; font-size: 8.5px; }
+.dossier-title { font-size: 26px; }
+.dossier-title-en { font-size: 9.5px; }
+.dossier-subtitle { margin-top: 14px; font-size: 11.5px; line-height: 1.75; }
+.dossier-actions { gap: 6px; margin-top: 15px; }
+.action-button { min-height: 31px; padding: 0 10px; gap: 6px; font-size: 9px; }
+.action-button svg { width: 13px; height: 13px; }
+.dossier-section { margin-top: 20px; }
+.dossier-section p { font-size: 11px; line-height: 1.78; }
+.spec-cell { min-height: 65px; padding: 10px 11px; }
+.spec-cell span { font-size: 7.5px; }
+.spec-cell strong { margin-top: 7px; font-size: 11.5px; line-height: 1.4; }
+.spec-cell em { font-size: 7px; }
+.relation-chip { padding: 6px 8px; font-size: 9.5px; }
+.impact-note { padding: 12px 13px; }
+.impact-note p { font-size: 10.5px; line-height: 1.75; }
+.safety-note { padding: 12px 13px; }
+.safety-note__head { font-size: 8.5px; }
+.safety-note p { font-size: 10px; line-height: 1.72; }
+.source-link { font-size: 8.5px; line-height: 1.5; }
+.level-disclaimer { font-size: 8.5px; line-height: 1.75; }
+.dossier-footnote { font-size: 7.5px; line-height: 1.7; }
+
+.scene-state { height: 28px; padding: 0 10px; font-size: 9px; }
+.scene-state__detail { font-size: 8px; }
+.scene-small-button { height: 28px; padding: 0 9px; font-size: 8px; }
+.scene-small-button svg { width: 13px; height: 13px; }
+.isocenter-tag { font-size: 7px; }
+.interaction-hint { font-size: 9.5px; }
+.axis-readout > div { font-size: 7.5px; }
+.axis-readout__iso span { font-size: 7.5px; }
+.physics-hud { width: 340px; padding: 14px; }
+.physics-hud__kicker { font-size: 9px; }
+.physics-formula { font-size: 17px; }
+.physics-caption { font-size: 9.5px; line-height: 1.65; }
+.physics-legend span { font-size: 8px; }
+.section-legend { width: 220px; padding: 12px; }
+.section-legend__row { min-height: 25px; font-size: 8px; }
+.callout { width: 184px; padding: 8px 10px; }
+.callout__index { font-size: 8.5px; }
+.callout__name { font-size: 11px; }
+.callout__en { margin: 4px 0 0 19px; font-size: 7.5px; }
+.callout__meta { margin: 4px 0 0 19px; font-size: 7.5px; }
+.reticle-caption { font-size: 7.5px; }
+.toast { padding: 7px 12px; font-size: 8.5px; }
+
+.console-row--main { padding: 12px 16px 9px; gap: 20px; }
+.console-label { margin-bottom: 8px; font-size: 9px; }
+.display-modes { gap: 4px; }
+.mode-chip { height: 30px; padding: 0 10px; font-size: 10px; }
+.mode-chip span { font-size: 7.5px; }
+.transport-btn { width: 30px; height: 29px; }
+.transport-btn svg { width: 14px; height: 14px; }
+.timeline-wrap { height: 30px; }
+.timeline-range { height: 20px; }
+.timeline-value { flex-basis: 48px; font-size: 9px; }
+.text-button { font-size: 8px; }
+.text-button.compact { height: 29px; }
+.console-row--sub { flex: 0 0 46px; gap: 22px; padding: 0 16px; }
+.console-group { gap: 10px; }
+.console-group .micro-label { font-size: 8.5px; }
+.console-select { height: 30px; max-width: 210px; font-size: 8.5px; }
+.segmented { height: 30px; }
+.segmented button { height: 28px; padding: 0 10px; font-size: 7.5px; }
+.console-button { height: 30px; padding: 0 10px; font-size: 7.5px; }
+.console-icon-button { width: 28px; height: 28px; }
+.mini-range { width: 96px; }
+
+.physics-console__main { gap: 22px; padding: 11px 16px 9px; }
+.physics-console-name { font-size: 9px; }
+.physics-console-status { font-size: 8px; }
+.lab-control { min-width: 155px; gap: 7px; }
+.lab-control__label { font-size: 8.5px; }
+.lab-control__hint { font-size: 7px; line-height: 1.5; }
+.lab-slider { width: 145px; height: 18px; }
+.lab-choice { height: 28px; padding: 0 8px; font-size: 7.5px; }
+.lab-play { width: 34px; height: 32px; }
+.lab-play svg { width: 14px; height: 14px; }
+.lab-readout-inline { padding-left: 15px; }
+.lab-readout-inline span { font-size: 7px; }
+.lab-readout-inline b { font-size: 12.5px; }
+.lab-overlay { max-height: 260px; min-height: 170px; }
+.lab-overlay__title { font-size: 8.5px; }
+.lab-overlay__head { min-height: 35px; padding: 0 12px; }
+.sequence-labels span { font-size: 8px; }
+.kspace-panel__label { font-size: 7.5px; }
+.kspace-info h4 { font-size: 9px; }
+.kspace-info p { font-size: 9px; line-height: 1.65; }
+.kspace-metrics span { font-size: 6.5px; }
+.kspace-metrics b { font-size: 9px; }
+.kspace-warning { font-size: 7.5px; }
+.modal-tab { height: 32px; padding: 0 12px; font-size: 10.5px; }
+.modal-title { font-size: 30px; }
+.modal-content { font-size: 11.5px; line-height: 1.82; }
+.modal-content h3 { font-size: 9.5px; }
+.modal-source__key { font-size: 8px; }
+.modal-source__title { font-size: 9.5px; }
+.modal-source__meta { font-size: 7.5px; }
+.modal-source p { font-size: 10.5px; }
+.safety-card h4 { font-size: 9.5px; }
+.safety-card p { font-size: 10.5px; }
+.glossary-term { font-size: 9.5px; }
+.glossary-desc { font-size: 10.5px; }
+.assumption-list li { font-size: 10.5px; }
+.boot-brand { font-size: 16px; }
+.boot-sub { font-size: 8px; }
+.boot-status { font-size: 8px; }
+.boot-disclaimer { font-size: 7px; }
+
+/* Intermediate screens */
+@media (max-width: 1279px) {
+  :root { --left: 288px; --right: 340px; --console: 152px; }
+  .brand-title { font-size: 12px; }
+  .brand-sub { font-size: 9px; }
+  .mode-tab { min-width: 126px; height: 38px; }
+  .mode-tab__title { font-size: 12px; }
+  .mode-tab__en { display: none; }
+  .panel-header h1 { font-size: 22px; }
+  .tree-item__copy b { font-size: 12px; }
+  .physics-hud { width: 320px; }
+  .console-row--main { gap: 14px; }
+  .console-row--sub { gap: 16px; }
+}
+
+@media (max-width: 1080px) {
+  :root { --console: 172px; --console-bottom: 12px; }
+  .brand-title { font-size: 12px; }
+  .mode-tab { min-width: 112px; height: 34px; }
+  .mode-tab__title { font-size: 11.5px; }
+  .mode-tab__index { display: none; }
+  .left-panel { width: min(336px, calc(100vw - 48px)); }
+  .right-panel { width: min(370px, calc(100vw - 32px)); }
+  .panel-header h1 { font-size: 24px; }
+  .panel-subtitle { font-size: 10.5px; }
+  .console-row--sub { flex: 0 0 44px; }
+  .physics-hud { width: 330px; }
+}
+
+@media (max-width: 760px) {
+  :root { --console: 204px; --console-bottom: 8px; --topbar: 96px; }
+  .topbar { height: 96px; }
+  .scene-topline { top: 106px; }
+  .brand-title { max-width: 140px; font-size: 11px; }
+  .brand-mark { width: 28px; height: 28px; }
+  .mode-tabs { height: 34px; }
+  .mode-tab { height: 31px; }
+  .mode-tab__title { font-size: 11px; }
+  .top-action-button { width: 29px; height: 29px; }
+  .lang-btn { font-size: 8px; }
+  .scene-state { height: 26px; font-size: 8px; }
+  .physics-hud, .section-legend { top: 142px; width: min(300px, calc(100vw - 16px)); }
+  .physics-formula { font-size: 14px; }
+  .physics-caption { font-size: 9px; }
+  .console-row--main { padding: 10px 8px 7px; gap: 8px; }
+  .console-label { font-size: 8px; margin-bottom: 5px; }
+  .mode-chip { height: 28px; font-size: 9.5px; }
+  .transport-btn { width: 28px; height: 27px; }
+  .timeline-value { flex-basis: 38px; font-size: 8.5px; }
+  .console-row--sub { flex: 0 0 42px; gap: 13px; padding: 0 8px; }
+  .console-group .micro-label { font-size: 7.5px; }
+  .console-select { max-width: 180px; font-size: 8px; }
+  .segmented button { font-size: 7px; }
+  .console-button { font-size: 7px; }
+  .lab-overlay { max-height: 270px; }
+  .modal-title { font-size: 25px; }
+  .modal-content { font-size: 11px; }
+  .side-panel .tree-item__copy b { font-size: 13px; }
+}
+
+@media (max-width: 420px) {
+  .brand-title { max-width: 120px; font-size: 10.5px; }
+  .mode-tab__title { font-size: 10.5px; }
+  .modal-tab { font-size: 9px; }
+  .side-panel .tree-item__copy b { font-size: 12.5px; }
+}
+
+/* Readability floor: no meaningful label below ~9px, larger secondary and mobile text */
+.micro-label,
+.console-label,
+.panel-kicker,
+.physics-hud__kicker,
+.scene-state,
+.level-badge {
+  font-size: 10px;
+}
+.level-badge { font-size: 8px; }
+.science-chip { font-size: 8px; }
+.panel-kicker { font-size: 9.5px; }
+.field-btn, .lang-btn { font-size: 9.5px; }
+.mode-tab__index, .mode-tab__en { font-size: 8.5px; }
+.panel-subtitle { font-size: 11px; }
+.tree-category__label { font-size: 9.5px; }
+.tree-category__count { font-size: 8.5px; }
+.tree-item { min-height: 50px; }
+.tree-item__index { font-size: 9px; }
+.tree-item__copy span { font-size: 9.5px; }
+.tree-note { font-size: 10px; }
+.tree-legend span { font-size: 8.5px; }
+.eyebrow { font-size: 9px; }
+.empty-copy { font-size: 11.5px; }
+.arch-row { font-size: 11px; }
+.howto-panel p { font-size: 10.5px; }
+.action-button { font-size: 9.5px; }
+.dossier-section p { font-size: 11.5px; }
+.spec-cell span { font-size: 8px; }
+.spec-cell strong { font-size: 12px; }
+.spec-cell em { font-size: 7.5px; }
+.impact-note p { font-size: 11px; }
+.safety-note p { font-size: 10.5px; }
+.safety-note__head { font-size: 9px; }
+.source-link { font-size: 9px; }
+.level-disclaimer { font-size: 9px; }
+.dossier-footnote { font-size: 8px; }
+.scene-state { font-size: 9.5px; }
+.scene-state__detail { font-size: 9px; }
+.section-legend__row { font-size: 9px; }
+.physics-caption { font-size: 10px; }
+.callout { width: 190px; }
+.callout__index { font-size: 9px; }
+.callout__name { font-size: 11.5px; }
+.callout__en, .callout__meta { font-size: 8.5px; }
+.console-label { font-size: 9.5px; }
+.mode-chip { font-size: 10.5px; }
+.mode-chip span { font-size: 8px; }
+.timeline-value { font-size: 9.5px; }
+.console-select { font-size: 9px; }
+.segmented button { font-size: 8.5px; }
+.console-button { font-size: 8.5px; }
+.console-group .micro-label { font-size: 9px; }
+.lab-overlay__title { font-size: 9.5px; }
+.sequence-labels span { font-size: 9px; }
+.kspace-info p { font-size: 9.5px; }
+.kspace-warning { font-size: 8.5px; }
+.modal-content { font-size: 12px; }
+.modal-content h3 { font-size: 10px; }
+.panel-footer #left-footer-note,
+.panel-footer #right-footer-label { font-size: 8px; }
+.panel-footer .science-chip { font-size: 8px; }

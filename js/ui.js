@@ -165,7 +165,7 @@ export function renderPart(part, controller, state) {
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">STRUCTURE / 结构</span></div><p>' + esc(pick(part.structure, lang)) + "</p></div>"
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">PRINCIPLE / 原理</span></div><p>' + esc(pick(part.principle, lang)) + "</p></div>"
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">TYPICAL SPECIFICATIONS / 典型规格</span></div><div class="spec-grid">' + specs
-    + '<div class="spec-cell" style="grid-column:1/-1"><span>' + esc(t(lang, "材料 / MATERIAL", "MATERIAL / 材料")) + "</span><strong style=\"font-family:var(--font-cn);font-size:9px;line-height:1.55\">" + esc(pick(part.material, lang)) + "</strong></div>"
+    + '<div class="spec-cell" style="grid-column:1/-1"><span>' + esc(t(lang, "材料 / MATERIAL", "MATERIAL / 材料")) + "</span><strong style=\"font-family:var(--font-cn);font-size:11px;line-height:1.6\">" + esc(pick(part.material, lang)) + "</strong></div>"
     + "</div></div>"
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">SYSTEM RELATIONS / 系统关系</span></div><div class="relation-list">' + relations + "</div></div>"
     + '<div class="impact-note"><p><b>' + esc(t(lang, "对成像的影响", "Imaging impact")) + '</b> · ' + esc(pick(part.impact, lang)) + "</p></div>"
@@ -439,9 +439,10 @@ export class LabelOverlay {
     }
     this.leaderGroup.style.opacity = "1";
     const safe = this.safeRect();
-    const width = window.innerWidth < 760 ? 146 : 162;
-    const height = 43;
-    const gap = 7;
+    const viewportWidth = window.innerWidth;
+    const width = viewportWidth < 760 ? 160 : viewportWidth < 1280 ? 176 : 190;
+    const height = 54;
+    const gap = 8;
     const singleColumn = window.innerWidth < 760;
     const centerX = (safe.left + safe.right) / 2;
     const sorted = this.callouts.map((c) => {
@@ -491,7 +492,7 @@ export class LabelOverlay {
         el.style.top = row.y + "px";
         el.classList.add("is-visible");
         const startX = side === "left" ? x + width : x;
-        const startY = row.y + 19;
+        const startY = row.y + 23;
         const endX = row.projected.x;
         const endY = row.projected.y;
         const elbow = side === "left" ? startX + 18 : startX - 18;

@@ -341,7 +341,7 @@ export class PhysicsLab {
     const material = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, depthTest: false, toneMapped: false });
     const sprite = new THREE.Sprite(material);
     sprite.position.set(position[0], position[1], position[2]);
-    sprite.scale.set(scale * 1.28, scale * 0.1875 * 1.28, 1);
+    sprite.scale.set(scale * 1.38, scale * 0.1875 * 1.38, 1);
     sprite.renderOrder = 40;
     this.overlay.add(sprite);
     return sprite;
@@ -836,7 +836,7 @@ export class PhysicsLab {
       ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(padL + plotW, y); ctx.stroke();
       // row label
       ctx.fillStyle = colors[i];
-      ctx.font = '6px "SFMono-Regular", Menlo, monospace';
+      ctx.font = '9px "SFMono-Regular", Menlo, monospace';
       ctx.globalAlpha = 0.8;
     }
     const drawBlock = (row, t0, t1, height, color, alpha = 0.65) => {
@@ -872,7 +872,7 @@ export class PhysicsLab {
     ctx.fillStyle = "rgba(159,226,242,.85)";
     ctx.beginPath(); ctx.arc(cursorX, padT, 2, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = "rgba(122,156,170,.75)";
-    ctx.font = '6px "SFMono-Regular", Menlo, monospace';
+    ctx.font = '9px "SFMono-Regular", Menlo, monospace';
     ctx.fillText("TR", xFor(0) + 4, cssH - 4);
     ctx.fillText("TR", xFor(1) + 4, cssH - 4);
     ctx.fillText("TE", xFor(0.48) - 6, cssH - 4);
@@ -1004,7 +1004,7 @@ export class PhysicsLab {
       kctx.fillRect(0, sy, n, 1);
     });
     kctx.fillStyle = "rgba(159, 236, 255, .75)";
-    kctx.font = '8px "SFMono-Regular", Menlo, monospace';
+    kctx.font = '10px "SFMono-Regular", Menlo, monospace';
     kctx.fillText("ky", n - 16, 13);
     kctx.strokeStyle = "rgba(125,201,223,.22)";
     kctx.strokeRect(0.5, 0.5, n - 1, n - 1);
