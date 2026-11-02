@@ -27,6 +27,10 @@
   </a>
 </p>
 
+<p align="center">
+  <sub><strong>Build with DeepSeek-V4.1-Flash1017.</strong> · <a href="prompt.md">open-source prompt</a></sub>
+</p>
+
 > **From the outer cover to k-space.** Explore a generic 3.0 T superconducting MRI as 21 engineering components, cut real geometry with clipping planes, isolate subsystems, and connect the hardware to the physics that forms an image.
 
 ---
@@ -203,13 +207,22 @@ See the in-app **Sources**, **Confidence** and **Safety** panels for the detaile
 │   ├── app.bundle.js
 │   └── systems/
 ├── previews/
+├── prompt.md
 ├── LICENSE
 └── THIRD_PARTY_NOTICES.md
 ```
 
+## Build & Prompt
+
+**Build with DeepSeek-V4.1-Flash1017.**
+
+The complete original development prompt is open-sourced in [prompt.md](prompt.md). It documents the scientific frame, hardware scope, interaction model, technical constraints and acceptance criteria. The prompt is released with this repository under the **MIT License**.
+
+---
+
 ## License
 
-Original code, procedural geometry, UI, text and preview renders are released under the **MIT License** (see [LICENSE](LICENSE)). Three.js is also MIT-licensed; its full notice is included in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). External references remain the property of their respective authors.
+Original code, procedural geometry, UI, text, preview renders and [prompt.md](prompt.md) are released under the **MIT License** (see [LICENSE](LICENSE)). Three.js is also MIT-licensed; its full notice is included in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). External references remain the property of their respective authors.
 
 <p align="center">
   <sub>Made with Three.js · Built for learning, not for clinical use.</sub><br>

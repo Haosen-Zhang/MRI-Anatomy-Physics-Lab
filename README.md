@@ -32,6 +32,10 @@
   <code>21</code> 个部件 · <code>06</code> 个子系统 · <code>07</code> 种观察模式 · <code>06</code> 个物理实验 · <code>02</code> 种语言 · <code>00</code> 个服务器依赖
 </p>
 
+<p align="center">
+  <sub><strong>Build with DeepSeek-V4.1-Flash1017.</strong> · <a href="prompt.md">open-source prompt</a></sub>
+</p>
+
 > **从机壳到 k-space。** 把一台通用 3.0 T 超导 MRI 拆成可旋转、可剖切、可隔离的 21 个工程模块，再用 3D 场、脉冲时序和真实 2D FFT 把成像物理跑给你看。
 >
 > 全部几何均由 Three.js 在运行时程序化生成。没有外部 MRI 模型、没有厂商 CAD、没有预渲染视频。
@@ -272,6 +276,7 @@ npm run build          # 生成 js/app.bundle.js
 │   ├── app.bundle.js           # 预构建离线 bundle
 │   └── systems/                # 机壳、磁体、梯度、RF、机房
 ├── previews/                   # README 与教学预览图
+├── prompt.md                   # 完整开源开发提示词
 ├── LICENSE
 └── THIRD_PARTY_NOTICES.md
 ```
@@ -293,9 +298,17 @@ npm run build          # 生成 js/app.bundle.js
 
 ---
 
+## 🧾 Build & Prompt
+
+**Build with DeepSeek-V4.1-Flash1017.**
+
+完整的原始开发提示词已开源在 [prompt.md](prompt.md)，包含科学框架、硬件范围、交互模型、技术约束与验收标准。该提示词随本仓库以 **MIT License** 发布。
+
+---
+
 ## 📜 License
 
-- 本项目原创建模、界面、文字与预览图：**MIT License**，见 [LICENSE](LICENSE)。
+- 本项目原创建模、界面、文字、预览图与 [prompt.md](prompt.md)：**MIT License**，见 [LICENSE](LICENSE)。
 - 运行时包含 **Three.js r187**（MIT）；其版权与许可证全文见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 - 外部文献仅作为引用与延伸阅读，其版权归原作者/机构所有。
 
