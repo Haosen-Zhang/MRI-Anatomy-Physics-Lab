@@ -165,7 +165,7 @@ export function renderPart(part, controller, state) {
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">STRUCTURE / 结构</span></div><p>' + esc(pick(part.structure, lang)) + "</p></div>"
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">PRINCIPLE / 原理</span></div><p>' + esc(pick(part.principle, lang)) + "</p></div>"
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">TYPICAL SPECIFICATIONS / 典型规格</span></div><div class="spec-grid">' + specs
-    + '<div class="spec-cell" style="grid-column:1/-1"><span>' + esc(t(lang, "材料 / MATERIAL", "MATERIAL / 材料")) + "</span><strong style=\"font-family:var(--font-cn);font-size:11px;line-height:1.6\">" + esc(pick(part.material, lang)) + "</strong></div>"
+    + '<div class="spec-cell spec-cell--material" style="grid-column:1/-1"><span>' + esc(t(lang, "材料 / MATERIAL", "MATERIAL / 材料")) + "</span><strong>" + esc(pick(part.material, lang)) + "</strong></div>"
     + "</div></div>"
     + '<div class="dossier-section"><div class="dossier-section__head"><span class="eyebrow">SYSTEM RELATIONS / 系统关系</span></div><div class="relation-list">' + relations + "</div></div>"
     + '<div class="impact-note"><p><b>' + esc(t(lang, "对成像的影响", "Imaging impact")) + '</b> · ' + esc(pick(part.impact, lang)) + "</p></div>"
@@ -347,7 +347,7 @@ export class LabelOverlay {
     }
     this.active = true;
     const width = window.innerWidth;
-    this.labelCount = width < 700 ? 2 : width < 1080 ? 4 : 5;
+    this.labelCount = width < 700 ? 2 : 4;
     const completeMode = this.controller.state.displayMode === "complete";
     const explodeCategory = this.controller.state.explodeCategory;
     const candidates = PARTS.slice()
@@ -379,6 +379,7 @@ export class LabelOverlay {
       el.className = "callout";
       el.dataset.part = part.id;
       el.dataset.side = "right";
+      el.title = [pick(part.name, lang), pick(part.name, lang === "zh" ? "en" : "zh"), pick(part.subtitle, lang)].join("\n");
       el.innerHTML = '<div class="callout__row"><span class="callout__index">' + pad(part.order) + '</span><span class="callout__name">' + esc(pick(part.name, lang)) + '</span></div><div class="callout__en">' + esc(pick(part.name, lang === "zh" ? "en" : "zh")) + '</div><div class="callout__meta">' + esc(pick(part.subtitle, lang)) + "</div>";
       el.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -403,7 +404,8 @@ export class LabelOverlay {
     const consoleTop = consoleEl ? consoleEl.getBoundingClientRect().top : height - 150;
     let left = 12;
     let right = width - 12;
-    let top = width < 760 ? 132 : 116;
+    const sceneTopline = document.querySelector(".scene-topline");
+    const top = (sceneTopline ? sceneTopline.getBoundingClientRect().bottom : 100) + 16;
     const leftPanel = document.querySelector(".left-panel");
     const rightPanel = document.querySelector(".right-panel");
     const body = document.body;
@@ -439,12 +441,12 @@ export class LabelOverlay {
     }
     this.leaderGroup.style.opacity = "1";
     const safe = this.safeRect();
-    const viewportWidth = window.innerWidth;
-    const width = viewportWidth < 760 ? 160 : viewportWidth < 1280 ? 176 : 190;
-    const height = 54;
-    const gap = 8;
-    const singleColumn = window.innerWidth < 760;
-    const centerX = (safe.left + safe.right) / 2;
+    // Measure the cards so larger type and wrapped names cannot overlap.
+    const width = this.callouts[0].el.offsetWidth;
+    this.callouts.forEach((c) => { c.height = c.el.offsetHeight; });
+    const height = Math.max(...this.callouts.map((c) => c.height));
+    const gap = 12;
+    const singleColumn = safe.right - safe.left < width * 2 + 48;
     const sorted = this.callouts.map((c) => {
       const anchor = this.scene.getPartAnchor(c.part.id);
       const projected = anchor ? this.scene.projectPosition(anchor) : null;
@@ -467,6 +469,10 @@ export class LabelOverlay {
 
     const allPlaced = [];
     Object.entries(columns).forEach(([side, rows]) => {
+      const capacity = Math.max(0, Math.floor((safe.bottom - safe.top - 6 + gap) / (height + gap)));
+      rows.sort((a, b) => Number(b.part.id === this.controller.state.selectedId) - Number(a.part.id === this.controller.state.selectedId) || (b.part.labelPriority || 0) - (a.part.labelPriority || 0));
+      rows.splice(capacity);
+      rows.sort((a, b) => a.projected.y - b.projected.y);
       let cursor = safe.top + 6;
       rows.forEach((row) => {
         const desired = Math.max(cursor, Math.min(safe.bottom - height, row.projected.y - height / 2));
@@ -486,13 +492,12 @@ export class LabelOverlay {
         row.x = x;
         row.side = side;
         const el = row.el;
-        el.style.width = width + "px";
         el.dataset.side = side;
         el.style.left = x + "px";
         el.style.top = row.y + "px";
         el.classList.add("is-visible");
         const startX = side === "left" ? x + width : x;
-        const startY = row.y + 23;
+        const startY = row.y + row.height / 2;
         const endX = row.projected.x;
         const endY = row.projected.y;
         const elbow = side === "left" ? startX + 18 : startX - 18;
@@ -506,7 +511,9 @@ export class LabelOverlay {
     });
 
     this.callouts.forEach((c) => {
-      if (!allPlaced.some((s) => s.part.id === c.part.id)) c.el.classList.remove("is-visible");
+      const placed = allPlaced.some((s) => s.part.id === c.part.id);
+      c.el.classList.toggle("is-visible", placed);
+      c.g.style.display = placed ? "" : "none";
     });
     this.updateReticle(safe);
   }

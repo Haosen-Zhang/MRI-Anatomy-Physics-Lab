@@ -817,7 +817,7 @@ export class PhysicsLab {
     const ctx = canvas.getContext("2d");
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, cssW, cssH);
-    const padL = 4, padR = 8, padT = 7, padB = 16;
+    const padL = 4, padR = 8, padT = 7, padB = 36;
     const plotW = cssW - padL - padR;
     const plotH = cssH - padT - padB;
     const xFor = (t) => padL + (t / 2) * plotW;
@@ -836,7 +836,7 @@ export class PhysicsLab {
       ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(padL + plotW, y); ctx.stroke();
       // row label
       ctx.fillStyle = colors[i];
-      ctx.font = '9px "SFMono-Regular", Menlo, monospace';
+      ctx.font = '12px "SFMono-Regular", Menlo, monospace';
       ctx.globalAlpha = 0.8;
     }
     const drawBlock = (row, t0, t1, height, color, alpha = 0.65) => {
@@ -871,12 +871,14 @@ export class PhysicsLab {
     ctx.beginPath(); ctx.moveTo(cursorX, padT); ctx.lineTo(cursorX, padT + plotH); ctx.stroke();
     ctx.fillStyle = "rgba(159,226,242,.85)";
     ctx.beginPath(); ctx.arc(cursorX, padT, 2, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = "rgba(122,156,170,.75)";
-    ctx.font = '9px "SFMono-Regular", Menlo, monospace';
-    ctx.fillText("TR", xFor(0) + 4, cssH - 4);
-    ctx.fillText("TR", xFor(1) + 4, cssH - 4);
-    ctx.fillText("TE", xFor(0.48) - 6, cssH - 4);
-    ctx.fillText("2 TR WINDOW · NOT TO SCALE", xFor(1.55), cssH - 4);
+    ctx.fillStyle = "#aebfcb";
+    ctx.font = '12px "SFMono-Regular", Menlo, monospace';
+    ctx.fillText("TR", xFor(0) + 4, cssH - 21);
+    ctx.fillText("TR", xFor(1) + 4, cssH - 21);
+    ctx.fillText("TE", xFor(0.48) - 6, cssH - 21);
+    ctx.textAlign = "right";
+    ctx.fillText("2 TR · NOT TO SCALE", cssW - padR, cssH - 4);
+    ctx.textAlign = "left";
   }
 
   sequenceState() {
