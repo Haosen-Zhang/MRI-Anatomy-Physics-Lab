@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="previews/banner.png" width="100%" alt="MRI Anatomy & Physics Lab — interactive 3D superconducting MRI teardown and physics lab">
+  <img src="previews/en/banner.png" width="100%" alt="MRI Anatomy & Physics Lab — interactive 3D superconducting MRI teardown and physics lab">
 </p>
 
 <h1 align="center">MRI Anatomy &amp; Physics Lab</h1>
@@ -81,39 +81,39 @@ No vendor CAD, patient data, pre-rendered video or external 3D assets.
 ## Gallery
 
 <p align="center">
-  <img src="previews/01-hero.png" width="100%" alt="Desktop interface showing transparent shell, assembly tree, technical dossier and callouts">
+  <img src="previews/en/01-hero.png" width="100%" alt="Desktop interface showing transparent shell, assembly tree, technical dossier and callouts">
 </p>
 <p align="center"><sub>Transparent-shell view · assembly tree · technical dossier · 3D callouts · disassembly timeline</sub></p>
 
 <p align="center">
-  <a href="previews/03-complete.png"><img src="previews/03-complete.png" width="76%" alt="Complete exterior assembly of the generic 3.0 T MRI"></a>
+  <a href="previews/en/03-complete.png"><img src="previews/en/03-complete.png" width="76%" alt="Complete exterior assembly of the generic 3.0 T MRI"></a>
 </p>
 <p align="center"><sub><strong>Complete assembly:</strong> outer housing, 70 cm bore, patient table, cold head and service turret.</sub></p>
 
 <table>
 <tr>
 <td width="50%" align="center">
-  <a href="previews/04-transverse.png"><img src="previews/04-transverse.png" width="100%" alt="Transverse section"></a><br>
+  <a href="previews/en/04-transverse.png"><img src="previews/en/04-transverse.png" width="100%" alt="Transverse section"></a><br>
   <sub><strong>Transverse section · z = 0</strong><br>real clipping + layer caps</sub>
 </td>
 <td width="50%" align="center">
-  <a href="previews/05-exploded.png"><img src="previews/05-exploded.png" width="100%" alt="Exploded assembly"></a><br>
+  <a href="previews/en/05-exploded.png"><img src="previews/en/05-exploded.png" width="100%" alt="Exploded assembly"></a><br>
   <sub><strong>100% exploded</strong><br>component callouts</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" align="center">
-  <a href="previews/06-larmor.png"><img src="previews/06-larmor.png" width="100%" alt="Larmor precession experiment"></a><br>
+  <a href="previews/en/06-larmor.png"><img src="previews/en/06-larmor.png" width="100%" alt="Larmor precession experiment"></a><br>
   <sub><strong>Larmor precession</strong><br>B₀ out-of-plane + M(t)</sub>
 </td>
 <td width="50%" align="center">
-  <a href="previews/07-sequence.png"><img src="previews/07-sequence.png" width="100%" alt="GRE sequence timeline"></a><br>
+  <a href="previews/en/07-sequence.png"><img src="previews/en/07-sequence.png" width="100%" alt="GRE sequence timeline"></a><br>
   <sub><strong>GRE sequence</strong><br>RF / gradients / ADC</sub>
 </td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-  <a href="previews/02-kspace.png"><img src="previews/02-kspace.png" width="78%" alt="K-space and reconstruction"></a><br>
+  <a href="previews/en/02-kspace.png"><img src="previews/en/02-kspace.png" width="78%" alt="K-space and reconstruction"></a><br>
   <sub><strong>K-space &amp; reconstruction</strong><br>real 2D FFT + aliasing</sub>
 </td>
 </tr>
@@ -124,7 +124,7 @@ No vendor CAD, patient data, pre-rendered video or external 3D assets.
 <p>A low-performance pixel-ratio mode is included for classroom projectors and phones.</p>
 
 <p align="center">
-  <a href="previews/08-mobile.png"><img src="previews/08-mobile.png" width="250" alt="Mobile layout"></a>
+  <a href="previews/en/08-mobile.png"><img src="previews/en/08-mobile.png" width="250" alt="Mobile layout"></a>
 </p>
 <p align="center"><sub><strong>390 × 844</strong> · drawers / adaptive console / touch controls</sub></p>
 
